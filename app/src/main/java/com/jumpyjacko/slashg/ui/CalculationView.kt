@@ -50,7 +50,7 @@ fun CalculationView(
     val textFieldWidth = 116
 
     Scaffold(
-        topBar = { SlashGAppBar(navController) },
+        topBar = { MainAppBar(navController) },
         modifier = Modifier.fillMaxSize()
     ) { innerPadding ->
         val viewModel = viewModel<CalculationViewModel>()
