@@ -23,6 +23,7 @@ class CalculationViewModel : ViewModel() {
         }
 
     fun addToSavedItems(value: Double) {
+        if (value == 0.0) return
         savedItems.add(value)
         priceInput = ""
         weightInput = ""
