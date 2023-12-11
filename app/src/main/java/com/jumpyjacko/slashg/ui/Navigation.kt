@@ -1,5 +1,10 @@
 package com.jumpyjacko.slashg.ui
 
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.scaleIn
+import androidx.compose.animation.scaleOut
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
@@ -27,10 +32,26 @@ fun NavigationGraph(
 @Composable
 fun NavigationGraphContent(navController: NavHostController) {
     NavigationGraph(navController = navController) {
-        composable(Screen.Calculation.route) {
+        composable(
+            route = Screen.Calculation.route,
+        ) {
             CalculationView(navController = navController)
         }
-        composable(Screen.Settings.route) {
+        composable(
+            route = Screen.Settings.route,
+            enterTransition = {
+                scaleIn(
+                    animationSpec = tween(durationMillis = 220, delayMillis = 90),
+                    initialScale = 1.1f
+                ) + fadeIn(animationSpec = tween(durationMillis = 220, delayMillis = 90))
+            },
+            exitTransition = {
+                scaleOut(
+                    animationSpec = tween(durationMillis = 220, delayMillis = 90),
+                    targetScale = 1.1f
+                ) + fadeOut(animationSpec = tween(durationMillis = 220, delayMillis = 90))
+            },
+        ) {
             SettingsView(navController = navController)
         }
     }
