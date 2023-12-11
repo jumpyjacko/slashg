@@ -3,7 +3,8 @@ package com.jumpyjacko.slashg
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import com.jumpyjacko.slashg.ui.CalculationView
+import androidx.navigation.compose.rememberNavController
+import com.jumpyjacko.slashg.ui.NavigationGraphContent
 import com.jumpyjacko.slashg.ui.theme.SlashGTheme
 
 class MainActivity : ComponentActivity() {
@@ -11,7 +12,8 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             SlashGTheme {
-                CalculationView()
+                val navController = rememberNavController()
+                NavigationGraphContent(navController = navController)
             }
         }
     }

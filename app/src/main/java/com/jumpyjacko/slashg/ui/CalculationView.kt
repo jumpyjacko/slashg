@@ -37,17 +37,20 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavHostController
 import com.jumpyjacko.slashg.R
 import com.jumpyjacko.slashg.utils.round
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CalculationView() {
+fun CalculationView(
+    navController: NavHostController,
+) {
     val mainTextSizes = 24
     val textFieldWidth = 116
 
     Scaffold(
-        topBar = { SlashGAppBar() },
+        topBar = { SlashGAppBar(navController) },
         modifier = Modifier.fillMaxSize()
     ) { innerPadding ->
         val viewModel = viewModel<CalculationViewModel>()
