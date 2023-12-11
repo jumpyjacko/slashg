@@ -28,6 +28,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.jumpyjacko.slashg.R
 
@@ -45,19 +46,19 @@ fun SettingsView(navController: NavHostController) {
         listOf(
             SettingItem(
                 title = "Appearance",
-                description = "Change Slash G's Appearance",
+                description = "Theme, Colours",
                 icon = Icons.Default.Palette,
                 onClick = {},
             ),
             SettingItem(
                 title = "Region",
-                description = "Change the region and units used",
+                description = "Language, Units",
                 icon = Icons.Default.Language,
                 onClick = {},
             ),
             SettingItem(
                 title = "About",
-                description = "About the app and licenses",
+                description = "Info, Open-Source Licenses, Links",
                 icon = Icons.Default.Info,
                 onClick = {},
             )
@@ -68,11 +69,12 @@ fun SettingsView(navController: NavHostController) {
         topBar = { SettingsAppBar(navController) },
         modifier = Modifier.fillMaxSize()
     ) { innerPadding ->
+        val viewModel = viewModel<SettingsViewModel>()
         Column(
             modifier = Modifier.padding(innerPadding)
         ) {
             Text(
-                text = stringResource(id = R.string.settings),
+                text = stringResource(id = R.string.settings) + " (non-functional)", // TODO: Remove "(non-functional)" when settings are functional
                 fontSize = MaterialTheme.typography.headlineLarge.fontSize,
                 fontStyle = MaterialTheme.typography.headlineLarge.fontStyle,
                 modifier = Modifier

@@ -1,4 +1,6 @@
 package com.jumpyjacko.slashg.ui
 
-class SettingsViewModel {
+import androidx.lifecycle.ViewModel
+
+class SettingsViewModel : ViewModel() {
 }
